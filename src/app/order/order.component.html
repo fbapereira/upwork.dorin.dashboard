@@ -1,0 +1,74 @@
+<mat-card *ngIf="order">
+    <form [formGroup]="form" (submit)="save()">
+        <div class="card">
+            <div class="product-info">
+                <p class="product-info-label"><strong>Product Name</strong> {{ order.productName }}</p>
+                <p class="product-info-label"><strong>Section Order Date</strong> {{ order.productName }}</p>
+                <p class="product-info-label"><strong>Shipping Date</strong> {{ order.productName }}</p>
+            </div>
+            <div class="order-info">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput placeholder="Mobile Number" formControlName="mobile">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>City / State</mat-label>
+                    <input matInput placeholder="City / State" formControlName="city">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Street</mat-label>
+                    <input matInput placeholder="Street" formControlName="street">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Order Status</mat-label>
+                    <mat-select formControlName="status" [compareWith]="compare">
+                        <mat-option *ngFor="let status of statuses"  [value]="status">{{ status.text }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Price</mat-label>
+                    <input matInput placeholder="Price" formControlName="shippingPrice">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>City / State</mat-label>
+                    <input matInput placeholder="City / State" formControlName="shippingCity">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Street</mat-label>
+                    <input matInput placeholder="Street" formControlName="shippingStreet">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Nr</mat-label>
+                    <input matInput placeholder="Nr" formControlName="shippingNumber">
+                </mat-form-field>
+            </div>
+            <div class="order-actions">
+                <mat-form-field appearance="outline">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea matInput placeholder="Ex. It makes me feel..." formControlName="comment"></textarea>
+                </mat-form-field>
+                <div class="order-actions-checks">
+                    <mat-checkbox formControlName="isShipped">Shipped</mat-checkbox>
+                    <mat-checkbox formControlName="isInvoiceMade">Invoice made</mat-checkbox>
+                </div>
+                <div class="order-actions-button">
+                    <button type="submit" mat-flat-button color="primary">Save</button>
+                    <button mat-flat-button color="primary">Ship</button>
+                    <button mat-flat-button color="primary">Invoice</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-card>

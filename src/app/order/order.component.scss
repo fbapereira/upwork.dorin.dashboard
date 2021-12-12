@@ -1,0 +1,61 @@
+mat-card {
+    margin: 1rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem;
+
+    .product-info {
+        display: flex;
+        flex-direction: column;
+        width: 12%;
+
+
+        .product-info-label {
+            margin: 1rem 0 ;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .order-info {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+    }
+
+    .order-actions {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+
+        .order-actions-checks,
+        .order-actions-button {
+            margin: 1rem 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+    }
+
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+
+        .product-info {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product-info,
+        .order-info,
+        .order-actions {
+            width: 100%;
+        }
+    }
+}
