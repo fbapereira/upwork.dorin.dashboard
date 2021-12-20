@@ -1,8 +1,16 @@
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
+
 const app = express();
-app.use(express.static(__dirname + '/dist/dorin-dashboard'));
-app.get('/*', function(req,res) {
-res.sendFile(path.join(__dirname+
-'/dist/dorin-dashboard/index.html'));});
+
+// Serve only the static files form the dist directory
+app.use(express.static(__dirname + '/dist/dorin-dashboard' + appName));
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname + '/dist/dorin-dashboard/index.html'));
+});
+app.use(compression());
+
+// Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
