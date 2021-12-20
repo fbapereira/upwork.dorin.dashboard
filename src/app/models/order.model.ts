@@ -10,11 +10,14 @@ export interface Order {
     name?: string;
     street?: string;
     city?: string;
+    county?: string;
     mobile?: string;
+    email?: string;
     status?: any;
     shippingPrice?: string;
     shippingCity?: string;
     shippingStreet?: string;
+    shippingCounty?: string;
     shippingNumber?: string;
     comment?: string;
     isShipped?: boolean;

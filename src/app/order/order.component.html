@@ -18,8 +18,18 @@
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
-                    <mat-label>City / State</mat-label>
-                    <input matInput placeholder="City / State" formControlName="city">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput placeholder="E-mail" formControlName="email">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>County</mat-label>
+                    <input matInput placeholder="county" formControlName="county">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City" formControlName="city">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
@@ -40,13 +50,34 @@
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
-                    <mat-label>City / State</mat-label>
-                    <input matInput placeholder="City / State" formControlName="shippingCity">
+                    <mat-label>Shipping County</mat-label>
+                    <input matInput placeholder="Shipping county" formControlName="shippingCounty" [matAutocomplete]="autoCounty">
+                    <mat-autocomplete autoActiveFirstOption  #autoCounty="matAutocomplete" appearance="outline">
+                        <mat-option *ngFor="let county of counties$ | async" [value]="county.Name">
+                            {{ county.Name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Shipping City</mat-label>
+                    <input matInput placeholder="City Shipping" formControlName="shippingCity" [matAutocomplete]="autoCity">
+                    <mat-autocomplete autoActiveFirstOption  #autoCity="matAutocomplete" appearance="outline">
+                        <mat-option *ngFor="let locality of localities$ | async" [value]="locality.Name">
+                            {{ locality.Name }}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
-                    <mat-label>Street</mat-label>
-                    <input matInput placeholder="Street" formControlName="shippingStreet">
+                    <mat-label>Shipping Street</mat-label>
+                    <input matInput placeholder="Shipping Street" formControlName="shippingStreet" [matAutocomplete]="autoStreet">
+                    <mat-autocomplete autoActiveFirstOption #autoStreet="matAutocomplete" appearance="outline">
+                        <mat-option *ngFor="let street of streets$ | async" [value]="street.Name">
+                            {{ street.Name }}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
@@ -65,8 +96,8 @@
                 </div>
                 <div class="order-actions-button">
                     <button type="submit" mat-flat-button color="primary">Save</button>
-                    <button mat-flat-button color="primary">Ship</button>
-                    <button mat-flat-button color="primary">Invoice</button>
+                    <button type='button' mat-flat-button color="primary" (click)="ship()">Ship</button>
+                    <button type='button' mat-flat-button color="primary" (click)="invoice()">Invoice</button>
                 </div>
             </div>
         </div>
